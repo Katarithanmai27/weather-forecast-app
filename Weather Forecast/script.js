@@ -1,4 +1,4 @@
-const apiKey = "944d0cf9890dc8e3089535f1b1f0d3c0";
+const apiKey = "YOUR_API_KEY_HERE";
 
 function updateRecentCities(city) {
   let recent = JSON.parse(localStorage.getItem("recentCities")) || [];
