@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen p-6">
+  <div class="bg-white max-w-6xl mx-auto rounded-lg shadow-lg p-6 space-y-6">
+
+    <!-- Header -->
+    <h1 class="text-2xl font-bold text-center text-white bg-blue-600 py-3 rounded">Weather Dashboard</h1>
+
+    <!-- Top Grid: Left Search / Right Current Weather -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+      <!-- Left: Search Controls -->
+      <div class="space-y-4 bg-blue-100 p-4 rounded">
+
+        <label for="cityInput" class="block font-semibold">Enter a City Name</label>
+        <input type="text" id="cityInput" placeholder="E.g., New York, London, Tokyo"
+               class="w-full p-2 border rounded" />
+
+        <button onclick="getWeatherByCity()"
+                class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Search</button>
+
+        <div class="text-center text-gray-500">or</div>
+
+        <button onclick="getWeatherByLocation()"
+                class="w-full bg-gray-700 text-white py-2 rounded hover:bg-gray-800">Use Current Location</button>
+
+        <!-- Error -->
+        <p id="error" class="text-red-600 text-sm text-center hidden">Invalid city. Try again.</p>
+      </div>
+
+      <!-- Right: Current Weather -->
+      <div id="weatherDisplay" class="md:col-span-2 hidden bg-blue-100 p-6 rounded flex flex-col md:flex-row justify-between items-center">
+        <div class="space-y-1 text-center md:text-left">
+          <h2 id="cityName" class="text-xl font-bold text-blue-800"></h2>
+          <p id="temp" class="text-gray-800"></p>
+          <p id="wind" class="text-gray-700"></p>
+          <p id="humidity" class="text-gray-700"></p>
+        </div>
+        <div class="text-center mt-4 md:mt-0">
+          <img id="icon" class="mx-auto" />
+          <p id="description" class="capitalize text-gray-800"></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 5-Day Forecast -->
+    <div id="forecast" class="hidden">
+      <h3 class="text-lg font-semibold mb-3 text-blue-600">5-Day Forecast</h3>
+      <div id="forecastCards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4"></div>
+    </div>
+
+  </div>
+
+  <!-- Recent Cities Dropdown -->
+  <div id="recentDropdown" class="hidden mt-2 bg-white border rounded shadow"></div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
